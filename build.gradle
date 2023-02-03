@@ -33,7 +33,7 @@ publishing {
             name = 'GitHubPackages'
             url = uri('https://maven.pkg.github.com/roleplaychat/RoleplayChatCore')
             credentials {
-                username = project.findProperty('gpr.user') ?: System.getenv('USERNAM')
+                username = project.findProperty('gpr.user') ?: System.getenv('USERNAME')
                 password = project.findProperty('gpr.key') ?: System.getenv('TOKEN')
             }
         }
