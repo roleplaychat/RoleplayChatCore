@@ -1,0 +1,24 @@
+{%- import 'templates/color_markers.pebble.twig' as markers -%}
+
+{%- set a = start_with_action -%}
+{%- set b = (action_parts | length) % 2 == 1 -%}
+
+{%- set end_with_action = (a and b ) or (not a and not b) -%}
+
+{%- set sep = wrapColor("*", "action") -%}
+{%- set start = start_with_action ? sep ~ " ": "" -%}
+{%- set end = end_with_action ? " " ~ sep: "" -%}
+
+{%- set odd_label = start_with_action ? "action": "text" -%}
+{%- set even_label = start_with_action ? "text": "action" -%}
+
+{%- set parts = [] -%}
+{%- for part in action_parts -%}
+    {%- if (loop.index % 2 == 0) -%}
+        {%- set parts = parts + [wrapColor(part, odd_label)] -%}
+    {%- else %}
+        {%- set parts = parts + [wrapColor(part, even_label)] -%}
+    {%- endif -%}
+{%- endfor -%}
+
+{{- start -}} {{ username }}{{- markers.label(label) -}}{{- not start_with_action ? ":" : "" }} {{ parts | join(" " ~ sep ~ " ") }} {{- end -}}

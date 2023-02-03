@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'ru.xunto.roleplaychat'
+version '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("io.pebbletemplates:pebble:3.1.4")
+    implementation("org.apache.commons:commons-lang3:3.11")
+
+    testImplementation 'org.testng:testng:6.10'
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.7.22'
+    testImplementation 'org.slf4j:slf4j-simple:1.6.1'
+    testImplementation "io.pebbletemplates:pebble:3.1.4"
+}

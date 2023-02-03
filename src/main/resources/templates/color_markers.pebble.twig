@@ -1,0 +1,7 @@
+{% macro label(label) -%}
+    {%- if label -%}
+        {%- filter wrapColor("label") -%}
+        {{- " " -}} ({{- label }})
+        {%- endfilter -%}
+    {%- endif -%}
+{%- endmacro %}
