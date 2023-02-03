@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'ru.xunto.roleplaychat'
+group 'net.xunto.roleplaychat'
 version '1.0.0'
 
 repositories {
