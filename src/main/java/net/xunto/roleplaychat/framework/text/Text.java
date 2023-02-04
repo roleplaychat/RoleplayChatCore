@@ -1,4 +1,4 @@
-package net.xunto.roleplaychat.framework.renderer.text;
+package net.xunto.roleplaychat.framework.text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +12,9 @@ public class Text {
         this.defaultColor = defaultColor;
     }
 
-    public void add(TextComponent component) {
+    public Text add(TextComponent component) {
         this.components.add(component);
+        return this;
     }
 
     public List<TextComponent> getComponents() {
@@ -43,5 +44,9 @@ public class Text {
         }
 
         return builder.toString();
+    }
+
+    public static Text fromStringAndColor(String string, TextColor color) {
+        return new Text(color).add(new TextComponent(string, color));
     }
 }

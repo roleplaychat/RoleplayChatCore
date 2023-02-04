@@ -36,10 +36,10 @@ public class RecallDistanceMiddleware extends AbstractRecallMiddleware {
 
             if (storedRange != forcedRange) {
                 ranges.put(requester.getUniqueID(), forcedRange);
-                sendSetDistanceMessage(requester, forcedRange);
+                sendSetDistanceMessage(request, forcedRange);
             } else {
                 ranges.remove(requester.getUniqueID());
-                sendSetMessage(requester, Translations.DISTANCE_RESET);
+                sendSetMessage(request, Translations.DISTANCE_RESET);
             }
 
             return;
@@ -52,8 +52,7 @@ public class RecallDistanceMiddleware extends AbstractRecallMiddleware {
         flow.next();
     }
 
-    private void sendSetDistanceMessage(ISpeaker requester, Distance distance) {
-        sendSetMessage(requester,
-                String.format(Translations.DISTANCE_SET, Translations.stringifyDistance(distance)));
+    private void sendSetDistanceMessage(Request request, Distance distance) {
+        sendSetMessage(request, String.format(Translations.DISTANCE_SET, Translations.stringifyDistance(distance)));
     }
 }

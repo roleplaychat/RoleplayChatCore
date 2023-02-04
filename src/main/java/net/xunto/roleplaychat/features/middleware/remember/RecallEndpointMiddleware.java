@@ -34,10 +34,10 @@ public class RecallEndpointMiddleware extends AbstractRecallMiddleware {
 
             if (storedEndpoint != forcedEndpoint) {
                 endpoints.put(requester.getUniqueID(), forcedEndpoint);
-                sendSetEndpointMessage(requester, forcedEndpoint);
+                sendSetEndpointMessage(request, forcedEndpoint);
             } else {
                 endpoints.remove(requester.getUniqueID());
-                sendSetMessage(requester, Translations.ENDPOINT_RESET);
+                sendSetMessage(request, Translations.ENDPOINT_RESET);
             }
 
             return;
@@ -71,7 +71,7 @@ public class RecallEndpointMiddleware extends AbstractRecallMiddleware {
         return null;
     }
 
-    private void sendSetEndpointMessage(ISpeaker requester, PrefixMatchEndpoint endpoint) {
-        sendSetMessage(requester, String.format(Translations.ENDPOINT_SET, endpoint.getName()));
+    private void sendSetEndpointMessage(Request request, PrefixMatchEndpoint endpoint) {
+        sendSetMessage(request, String.format(Translations.ENDPOINT_SET, endpoint.getName()));
     }
 }

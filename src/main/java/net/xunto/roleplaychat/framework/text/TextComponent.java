@@ -1,4 +1,4 @@
-package net.xunto.roleplaychat.framework.renderer.text;
+package net.xunto.roleplaychat.framework.text;
 
 public class TextComponent {
     private final String content;

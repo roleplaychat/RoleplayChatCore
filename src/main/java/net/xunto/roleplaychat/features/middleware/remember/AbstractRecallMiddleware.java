@@ -1,14 +1,19 @@
 package net.xunto.roleplaychat.features.middleware.remember;
 
-import net.xunto.roleplaychat.api.ISpeaker;
 import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.framework.api.Priority;
+import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.api.Stage;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
+import net.xunto.roleplaychat.framework.text.Text;
+import net.xunto.roleplaychat.framework.text.TextColor;
+import net.xunto.roleplaychat.framework.text.TextComponent;
 
 public abstract class AbstractRecallMiddleware extends Middleware {
-    static void sendSetMessage(ISpeaker requester, String text) {
-        requester.sendMessage(text, TextColor.GREEN);
+    static void sendSetMessage(Request request, String string) {
+        request.getRequester().sendMessage(
+            request,
+            Text.fromStringAndColor(string, TextColor.GREEN)
+        );
     }
 
     static boolean isSetRequest(String text, String[] prefixes) {

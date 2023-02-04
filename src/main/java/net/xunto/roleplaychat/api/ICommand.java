@@ -1,5 +1,6 @@
 package net.xunto.roleplaychat.api;
 
+import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.commands.CommandException;
 
 public interface ICommand {
@@ -9,5 +10,5 @@ public interface ICommand {
 
     boolean canExecute(ISpeaker speaker);
 
-    void execute(ISpeaker speaker, String[] args) throws CommandException;
+    void execute(Request request, String[] args) throws CommandException;
 }

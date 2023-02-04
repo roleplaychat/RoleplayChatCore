@@ -36,12 +36,13 @@ public class CommandEndpoint<T extends PrefixMatchEndpoint> implements ICommand 
     }
 
     @Override
-    public void execute(ISpeaker speaker, String[] args) throws CommandException {
+    public void execute(Request request, String[] args) throws CommandException {
+        ISpeaker speaker = request.getRequester();
         String msg = String.join(" ", args);
-        Request request = new Request(msg, speaker);
+        Request newRequest = new Request(msg, speaker);
         Environment environment = new Environment(speaker.getName(), msg);
         MessageState state = environment.getState();
         state.setValue(PrefixMatchEndpoint.FORCED_ENDPOINT, endpoint);
-        core.process(request, environment);
+        core.process(newRequest, environment);
     }
 }
