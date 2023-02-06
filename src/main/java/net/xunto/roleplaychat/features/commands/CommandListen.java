@@ -37,10 +37,11 @@ public class CommandListen implements ICommand {
     }
 
     @Override
-    public void execute(Request request, String[] args) throws CommandException {
-        ISpeaker speaker = request.getRequester();
-        ISpeaker target = speaker;
-        IServer server = speaker.getWorld().getServer();
+    public void execute(ISpeaker source, String[] args) throws CommandException {
+        ISpeaker target = source;
+        IServer server = source.getWorld().getServer();
+
+        Request request = new Request(this.getCommandName(), source);
 
         if (args.length > 0) {
             String tryUsername = args[0];
@@ -83,8 +84,8 @@ public class CommandListen implements ICommand {
             )
         );
 
-        if (!target.equals(speaker)) {
-            speaker.sendMessage(
+        if (!target.equals(source)) {
+            source.sendMessage(
                 request,
                 Text.fromStringAndColor(
                     String.format(

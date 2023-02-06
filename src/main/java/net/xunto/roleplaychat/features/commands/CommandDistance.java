@@ -65,9 +65,7 @@ public class CommandDistance implements ICommand {
     }
 
     @Override
-    public void execute(Request request, String[] args) throws CommandException {
-        ISpeaker speaker = request.getRequester();
-
+    public void execute(ISpeaker speaker, String[] args) throws CommandException {
         String msg = String.join(" ", args);
         Request newRequest = new Request(this.addDistance(msg), speaker);
         Environment environment = new Environment(speaker.getName(), msg);

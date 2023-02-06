@@ -10,5 +10,5 @@ public interface ICommand {
 
     boolean canExecute(ISpeaker speaker);
 
-    void execute(Request request, String[] args) throws CommandException;
+    void execute(ISpeaker speaker, String[] args) throws CommandException;
 }
