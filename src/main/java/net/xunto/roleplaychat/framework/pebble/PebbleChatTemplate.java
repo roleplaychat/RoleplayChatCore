@@ -3,9 +3,9 @@ package net.xunto.roleplaychat.framework.pebble;
 import com.mitchellbosecke.pebble.PebbleEngine;
 import com.mitchellbosecke.pebble.template.PebbleTemplate;
 import net.xunto.roleplaychat.framework.renderer.ITemplate;
-import net.xunto.roleplaychat.framework.renderer.text.Text;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
-import net.xunto.roleplaychat.framework.renderer.text.TextComponent;
+import net.xunto.roleplaychat.framework.text.Text;
+import net.xunto.roleplaychat.framework.text.TextColor;
+import net.xunto.roleplaychat.framework.text.TextComponent;
 import net.xunto.roleplaychat.framework.state.MessageState;
 
 import java.io.IOException;

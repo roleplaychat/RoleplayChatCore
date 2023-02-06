@@ -8,7 +8,7 @@ import net.xunto.roleplaychat.framework.api.PrefixMatchEndpoint;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.pebble.PebbleChatTemplate;
 import net.xunto.roleplaychat.framework.renderer.ITemplate;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
+import net.xunto.roleplaychat.framework.text.TextColor;
 
 import java.util.HashMap;
 import java.util.Map;

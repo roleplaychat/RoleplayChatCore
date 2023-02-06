@@ -12,7 +12,7 @@ import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.api.Stage;
 import net.xunto.roleplaychat.framework.middleware_flow.Flow;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
+import net.xunto.roleplaychat.framework.text.TextColor;
 import net.xunto.roleplaychat.framework.state.IProperty;
 import net.xunto.roleplaychat.framework.state.Property;
 

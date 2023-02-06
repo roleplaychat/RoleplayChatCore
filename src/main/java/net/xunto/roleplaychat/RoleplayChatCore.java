@@ -17,7 +17,7 @@ import net.xunto.roleplaychat.framework.api.Environment;
 import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.middleware_flow.Flow;
-import net.xunto.roleplaychat.framework.renderer.text.Text;
+import net.xunto.roleplaychat.framework.text.Text;
 
 import java.util.*;
 
@@ -25,12 +25,11 @@ public class RoleplayChatCore {
     public final static RoleplayChatCore instance = new RoleplayChatCore();
 
     private ILogger logger;
-    private Set<ICompat> compats = new HashSet<>();
+    private final Set<ICompat> compats = new HashSet<>();
 
-
-    private List<Middleware> middleware = new ArrayList<>();
-    private List<ICommand> commands = new ArrayList<>();
-    private List<IPermission> permissions = new ArrayList<>();
+    private final List<Middleware> middleware = new ArrayList<>();
+    private final List<ICommand> commands = new ArrayList<>();
+    private final List<IPermission> permissions = new ArrayList<>();
 
     public RoleplayChatCore() {
         // Middleware
@@ -106,7 +105,7 @@ public class RoleplayChatCore {
 
         List<Text> result = new ArrayList<>();
         for (Environment resultEnvironment : toSend) {
-            Text text = this.send(resultEnvironment);
+            Text text = this.send(request, resultEnvironment);
 
             if (!resultEnvironment.getState().getValue(Flow.IS_LIGHT_FORK, false)) {
                 result.add(text);
@@ -125,11 +124,11 @@ public class RoleplayChatCore {
         return result;
     }
 
-    public Text send(Environment environment) {
+    public Text send(Request request, Environment environment) {
         Text text = environment.getTemplate().render(environment.getState(), environment.getColors());
 
         for (ISpeaker recipient : environment.getRecipients()) {
-            recipient.sendMessage(text);
+            recipient.sendMessage(request, text);
         }
 
         return text;

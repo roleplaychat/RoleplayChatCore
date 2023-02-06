@@ -6,7 +6,7 @@ import net.xunto.roleplaychat.framework.api.Priority;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.pebble.PebbleChatTemplate;
 import net.xunto.roleplaychat.framework.renderer.ITemplate;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
+import net.xunto.roleplaychat.framework.text.TextColor;
 import net.xunto.roleplaychat.framework.state.IProperty;
 import net.xunto.roleplaychat.framework.state.MessageState;
 import net.xunto.roleplaychat.framework.state.Property;

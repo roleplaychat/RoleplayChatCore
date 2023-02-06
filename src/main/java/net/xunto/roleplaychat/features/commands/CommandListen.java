@@ -10,9 +10,11 @@ import net.xunto.roleplaychat.features.middleware.distance.hearing_gm.IHearingMo
 import net.xunto.roleplaychat.features.middleware.distance.hearing_gm.InfiniteHearingMode;
 import net.xunto.roleplaychat.features.middleware.distance.hearing_gm.NoExtraHearingMode;
 import net.xunto.roleplaychat.features.permissions.PermissionGM;
+import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.commands.CommandException;
 import net.xunto.roleplaychat.framework.commands.CommandUtils;
-import net.xunto.roleplaychat.framework.renderer.text.TextColor;
+import net.xunto.roleplaychat.framework.text.Text;
+import net.xunto.roleplaychat.framework.text.TextColor;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Arrays;
@@ -35,9 +37,11 @@ public class CommandListen implements ICommand {
     }
 
     @Override
-    public void execute(ISpeaker speaker, String[] args) throws CommandException {
-        ISpeaker target = speaker;
-        IServer server = speaker.getWorld().getServer();
+    public void execute(ISpeaker source, String[] args) throws CommandException {
+        ISpeaker target = source;
+        IServer server = source.getWorld().getServer();
+
+        Request request = new Request(this.getCommandName(), source);
 
         if (args.length > 0) {
             String tryUsername = args[0];
@@ -70,17 +74,28 @@ public class CommandListen implements ICommand {
 
         ListenMiddleware.setHearingMode(target, newMode);
 
-        target.sendMessage(String.format(
-                Translations.YOUR_HEARING_MODE_CHANGED,
-                newMode.getHumanReadable()
-        ), TextColor.GREEN);
-
-        if (!target.equals(speaker)) {
-            speaker.sendMessage(String.format(
-                    Translations.HEARING_MODE_CHANGED,
-                    target.getName(),
+        target.sendMessage(request,
+            Text.fromStringAndColor(
+                String.format(
+                    Translations.YOUR_HEARING_MODE_CHANGED,
                     newMode.getHumanReadable()
-            ), TextColor.GREEN);
+                ),
+                TextColor.GREEN
+            )
+        );
+
+        if (!target.equals(source)) {
+            source.sendMessage(
+                request,
+                Text.fromStringAndColor(
+                    String.format(
+                        Translations.HEARING_MODE_CHANGED,
+                        target.getName(),
+                        newMode.getHumanReadable()
+                    ),
+                    TextColor.GREEN
+                )
+            );
         }
     }
 }
