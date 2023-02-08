@@ -1,6 +1,15 @@
 package net.xunto.roleplaychat;
 
-import net.xunto.roleplaychat.api.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import net.xunto.roleplaychat.api.ICommand;
+import net.xunto.roleplaychat.api.ICompat;
+import net.xunto.roleplaychat.api.ILogger;
+import net.xunto.roleplaychat.api.IPermission;
+import net.xunto.roleplaychat.api.ISpeaker;
 import net.xunto.roleplaychat.features.commands.CommandDistance;
 import net.xunto.roleplaychat.features.commands.CommandListen;
 import net.xunto.roleplaychat.features.endpoints.ActionEndpoint;
@@ -18,8 +27,7 @@ import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.middleware_flow.Flow;
 import net.xunto.roleplaychat.framework.text.Text;
-
-import java.util.*;
+import net.xunto.roleplaychat.plugins.PluginLoader;
 
 public class RoleplayChatCore {
     public final static RoleplayChatCore instance = new RoleplayChatCore();
@@ -30,6 +38,8 @@ public class RoleplayChatCore {
     private final List<Middleware> middleware = new ArrayList<>();
     private final List<ICommand> commands = new ArrayList<>();
     private final List<IPermission> permissions = new ArrayList<>();
+    
+    private final PluginLoader pluginLoader = new PluginLoader(this);
 
     public RoleplayChatCore() {
         // Middleware
@@ -148,5 +158,9 @@ public class RoleplayChatCore {
 
     public void setLogger(ILogger logger) {
         this.logger = logger;
+    }
+
+    public void loadPlugin(String pluginClassName) {
+        this.pluginLoader.load(pluginClassName);
     }
 }
