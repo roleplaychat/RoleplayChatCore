@@ -160,7 +160,7 @@ public class RoleplayChatCore {
         this.logger = logger;
     }
 
-    public void loadPlugin(String pluginClassName) {
-        this.pluginLoader.load(pluginClassName);
+    public void loadPlugins(String[] plugins) {
+        this.pluginLoader.loadAll(plugins);
     }
 }

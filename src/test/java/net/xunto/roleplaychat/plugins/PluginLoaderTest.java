@@ -1,6 +1,8 @@
 package net.xunto.roleplaychat.plugins;
 
 import net.xunto.roleplaychat.RoleplayChatCore;
+import net.xunto.roleplaychat.features.middleware.distance.DistanceMiddleware;
+import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.plugins.exceptions.NotPluginException;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,6 +10,8 @@ import org.mockito.Mockito;
 
 public class PluginLoaderTest {
 
+  public static final Middleware MARKER1 = new DistanceMiddleware();
+  public static final Middleware MARKER2 = new DistanceMiddleware();
   private RoleplayChatCore core;
   private PluginLoader loader;
 
@@ -18,10 +22,21 @@ public class PluginLoaderTest {
   }
 
   @Test
+  public void testLoadAll() {
+    this.loader.loadAll(new String[] {
+            TestPlugin.class.getName(),
+            TestPlugin2.class.getName()
+    });
+
+    Mockito.verify(this.core).register(MARKER1);
+    Mockito.verify(this.core).register(MARKER2);
+  }
+
+  @Test
   public void testLoadPlugin() {
     this.loader.load(TestPlugin.class.getName());
 
-    Mockito.verify(this.core).register(TestPlugin.MARKER);
+    Mockito.verify(this.core).register(MARKER1);
   }
 
   @Test(expected = RuntimeException.class)
