@@ -20,6 +20,8 @@ public class PluginLoaderTest {
   @Test
   public void testLoadPlugin() {
     this.loader.load(TestPlugin.class.getName());
+
+    Mockito.verify(this.core).register(TestPlugin.MARKER);
   }
 
   @Test(expected = RuntimeException.class)
