@@ -1,10 +1,6 @@
 package net.xunto.roleplaychat.plugins;
 
 import net.xunto.roleplaychat.RoleplayChatCore;
-import net.xunto.roleplaychat.api.IServer;
-import net.xunto.roleplaychat.api.ISpeaker;
-import net.xunto.roleplaychat.api.IWorld;
-import net.xunto.roleplaychat.api.Position;
 import net.xunto.roleplaychat.plugins.exceptions.NotPluginException;
 import org.junit.Before;
 import org.junit.Test;
