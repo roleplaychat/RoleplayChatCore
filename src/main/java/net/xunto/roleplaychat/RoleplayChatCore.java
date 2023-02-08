@@ -27,7 +27,7 @@ import net.xunto.roleplaychat.framework.api.Middleware;
 import net.xunto.roleplaychat.framework.api.Request;
 import net.xunto.roleplaychat.framework.middleware_flow.Flow;
 import net.xunto.roleplaychat.framework.text.Text;
-import net.xunto.roleplaychat.plugins.PluginLoader;
+import net.xunto.roleplaychat.pluginloader.PluginLoader;
 
 public class RoleplayChatCore {
     public final static RoleplayChatCore instance = new RoleplayChatCore();

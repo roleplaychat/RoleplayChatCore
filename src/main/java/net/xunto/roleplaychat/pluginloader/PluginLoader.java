@@ -1,8 +1,8 @@
-package net.xunto.roleplaychat.plugins;
+package net.xunto.roleplaychat.pluginloader;
 
 import net.xunto.roleplaychat.RoleplayChatCore;
-import net.xunto.roleplaychat.plugins.exceptions.NotPluginException;
-import net.xunto.roleplaychat.plugins.exceptions.PluginLoadException;
+import net.xunto.roleplaychat.pluginloader.exceptions.NotPluginException;
+import net.xunto.roleplaychat.pluginloader.exceptions.PluginLoadException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

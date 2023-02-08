@@ -1,9 +1,9 @@
-package net.xunto.roleplaychat.plugins;
+package net.xunto.roleplaychat.pluginloader;
 
 import net.xunto.roleplaychat.RoleplayChatCore;
 import net.xunto.roleplaychat.features.middleware.distance.DistanceMiddleware;
 import net.xunto.roleplaychat.framework.api.Middleware;
-import net.xunto.roleplaychat.plugins.exceptions.NotPluginException;
+import net.xunto.roleplaychat.pluginloader.exceptions.NotPluginException;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

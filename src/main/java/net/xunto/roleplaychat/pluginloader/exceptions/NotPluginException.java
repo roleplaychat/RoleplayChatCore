@@ -1,4 +1,4 @@
-package net.xunto.roleplaychat.plugins.exceptions;
+package net.xunto.roleplaychat.pluginloader.exceptions;
 
 public class NotPluginException extends PluginLoadException {
 

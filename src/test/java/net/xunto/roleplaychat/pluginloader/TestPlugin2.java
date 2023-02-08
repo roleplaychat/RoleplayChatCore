@@ -1,4 +1,4 @@
-package net.xunto.roleplaychat.plugins;
+package net.xunto.roleplaychat.pluginloader;
 
 import net.xunto.roleplaychat.RoleplayChatCore;
 
