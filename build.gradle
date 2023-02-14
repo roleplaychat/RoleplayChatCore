@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'net.xunto.roleplaychat'
-version '2.0.0-a5'
+version '2.0.0-a6'
 
 repositories {
     mavenCentral()
