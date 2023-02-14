@@ -6,6 +6,7 @@ import net.xunto.roleplaychat.pluginloader.exceptions.PluginLoadException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ServiceLoader;
 
 public class PluginLoader {
     private final RoleplayChatCore core;
@@ -48,6 +49,14 @@ public class PluginLoader {
     public void loadAll(String[] pluginClassNames) {
         for (String pluginClassName : pluginClassNames) {
             this.load(pluginClassName);
+        }
+    }
+
+    public void loadWithServiceLoader() {
+        ServiceLoader<IPlugin> serviceLoader = ServiceLoader.load(IPlugin.class);
+
+        for (IPlugin plugin : serviceLoader) {
+            plugin.init(core);
         }
     }
 }

@@ -163,4 +163,9 @@ public class RoleplayChatCore {
     public void loadPlugins(String[] plugins) {
         this.pluginLoader.loadAll(plugins);
     }
+
+    public void init() {
+        this.warmUpRenderer();
+        this.pluginLoader.loadWithServiceLoader();
+    }
 }

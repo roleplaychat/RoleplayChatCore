@@ -39,6 +39,14 @@ public class PluginLoaderTest {
     Mockito.verify(this.core).register(MARKER1);
   }
 
+  @Test
+  public void testPluginServiceLoader() {
+    this.loader.loadWithServiceLoader();
+
+    Mockito.verify(this.core).register(MARKER1);
+    Mockito.verify(this.core).register(MARKER2);
+  }
+
   @Test(expected = RuntimeException.class)
   public void testNoClass() {
     this.loader.load("non-existent-class");
